@@ -62,7 +62,10 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
         'fas fa-theater-masks',
         'Pages.Roles'
       ),
-      new MenuItem(this.l('About'), '/app/about', 'fas fa-info-circle'),
+      new MenuItem(this.l('Products'), '/app/products', 'fab fa-product-hunt', 'Pages.Products'),
+      new MenuItem(this.l('Orders'), '/app/orders', 'fa fa-shopping-cart', 'Pages.Orders'),
+      new MenuItem(this.l('Reservations'), '/app/reservations', 'fas fa-clipboard-check', 'Pages.Reservations')
+     /* new MenuItem(this.l('About'), '/app/about', 'fas fa-info-circle'),
       new MenuItem(this.l('MultiLevelMenu'), '', 'fas fa-circle', '', [
         new MenuItem('ASP.NET Boilerplate', '', 'fas fa-dot-circle', '', [
           new MenuItem(
@@ -113,7 +116,7 @@ export class SidebarMenuComponent extends AppComponentBase implements OnInit {
             'far fa-circle'
           )
         ])
-      ])
+      ])*/
     ];
   }
 

@@ -17,6 +17,7 @@ import { AppAuthService } from '@shared/auth/app-auth.service';
 export class RegisterComponent extends AppComponentBase {
   model: RegisterInput = new RegisterInput();
   saving = false;
+  step = 1;
 
   constructor(
     injector: Injector,
@@ -28,6 +29,11 @@ export class RegisterComponent extends AppComponentBase {
   }
 
   save(): void {
+    this.step = 2;
+  }
+
+  saveBankInfo() {
+    debugger;
     this.saving = true;
     this._accountService
       .register(this.model)
@@ -50,6 +56,9 @@ export class RegisterComponent extends AppComponentBase {
         this.authService.authenticate(() => {
           this.saving = false;
         });
+      },
+      (error) => {
+        this.step = 1;
       });
   }
 }
