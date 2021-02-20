@@ -17,6 +17,9 @@ import { AccountFooterComponent } from './layout/account-footer.component';
 // tenants
 import { TenantChangeComponent } from './tenant/tenant-change.component';
 import { TenantChangeDialogComponent } from './tenant/tenant-change-dialog.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { UserInvitationComponent } from './user-invitation/user-invitation.component';
 
 @NgModule({
     imports: [
@@ -38,7 +41,10 @@ import { TenantChangeDialogComponent } from './tenant/tenant-change-dialog.compo
         AccountFooterComponent,
         // tenant
         TenantChangeComponent,
+        ForgotPasswordComponent,
+        ResetPasswordComponent,
         TenantChangeDialogComponent,
+        UserInvitationComponent,
     ],
     entryComponents: [
         // tenant

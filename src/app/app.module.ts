@@ -41,6 +41,7 @@ import { SidebarMenuComponent } from './layout/sidebar-menu.component';
 import { ProductsComponent } from './products/products.component';
 import { OrdersComponent } from './orders/orders.component';
 import { ReservationsComponent } from './reservations/reservations.component';
+import { InviteUserComponent } from './users/invite-user/invite-user.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { ReservationsComponent } from './reservations/reservations.component';
     SidebarMenuComponent,
     ProductsComponent,
     OrdersComponent,
-    ReservationsComponent
+    ReservationsComponent,
+    InviteUserComponent
   ],
   imports: [
     CommonModule,

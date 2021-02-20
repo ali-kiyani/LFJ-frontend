@@ -14,6 +14,7 @@ import {
 import { CreateUserDialogComponent } from './create-user/create-user-dialog.component';
 import { EditUserDialogComponent } from './edit-user/edit-user-dialog.component';
 import { ResetPasswordDialogComponent } from './reset-password/reset-password.component';
+import { InviteUserComponent } from './invite-user/invite-user.component';
 
 class PagedUsersRequestDto extends PagedRequestDto {
   keyword: string;
@@ -29,6 +30,7 @@ export class UsersComponent extends PagedListingComponentBase<UserDto> {
   keyword = '';
   isActive: boolean | null;
   advancedFiltersVisible = false;
+  inviteUserEmail: string;
 
   constructor(
     injector: Injector,
@@ -44,6 +46,20 @@ export class UsersComponent extends PagedListingComponentBase<UserDto> {
 
   editUser(user: UserDto): void {
     this.showCreateOrEditUserDialog(user.id);
+  }
+
+  inviteUser() {
+    let inviteUserDialog: BsModalRef;
+    inviteUserDialog = this._modalService.show(
+        InviteUserComponent,
+        {
+          class: 'modal-md',
+        }
+      );
+
+      inviteUserDialog.content.onSave.subscribe(() => {
+      this.refresh();
+    });
   }
 
   public resetPassword(user: UserDto): void {

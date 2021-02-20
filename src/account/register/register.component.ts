@@ -18,6 +18,8 @@ export class RegisterComponent extends AppComponentBase {
   model: RegisterInput = new RegisterInput();
   saving = false;
   step = 1;
+  emailExists = false;
+  usernameExists = false;
 
   constructor(
     injector: Injector,
@@ -29,12 +31,23 @@ export class RegisterComponent extends AppComponentBase {
   }
 
   save(): void {
-    this.step = 2;
+    let emailCheck = this._accountService.verifyEmailExist(this.model.emailAddress);
+    emailCheck.subscribe(isEmailExist => {
+        this._accountService.verifyUsernameExist(this.model.userName).subscribe(isUsernameExist => {
+          if (isUsernameExist == false && isEmailExist == false) {
+            this.step = 2;
+          } else {
+            this.emailExists = isEmailExist;
+            this.usernameExists = isUsernameExist;
+          }
+        });
+    });
   }
 
   saveBankInfo() {
     debugger;
     this.saving = true;
+    this.model.userName = this.model.emailAddress;
     this._accountService
       .register(this.model)
       .pipe(
